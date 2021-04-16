@@ -5,9 +5,311 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css"
+		/>
+
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 		<link rel="stylesheet" href="style.css" />
+		<!-- <link rel="stylesheet" href="newtics.css" /> -->
 	</head>
 	<body>
-		<h1>Hello There</h1>
+		<div class="index container animated zoomIn">
+			<div class="form contactform">
+				<div id="page1">
+					<h1>Book Your Train Ticket</h1>
+					<div class="index row">
+						<div class="field col-sm-6">
+							<label for="from">From :</label>
+							<input id="from" type="text" />
+						</div>
+
+						<div class="field col-sm-6">
+							<label for="to">To :</label>
+							<input id="to" type="text" />
+						</div>
+
+						<div class="field col-sm-6 col-centered">
+							<label for="datepicker">Date</label>
+							<input id="datepicker" type="text" />
+						</div>
+						<div class="clearfix visible-xs"></div>
+						<div class="field col-sm-6 col-centered">
+							<div id="search" class="btn btn-primary">Search for Trains</div>
+						</div>
+					</div>
+				</div>
+				<div id="page2" class="animated zoomInDown">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="table-responsive text-center">
+								<table class="table table-bordered table-hover">
+									<caption class="text-center">
+										Available Trains :
+									</caption>
+									<thead>
+										<tr>
+											<th>Train No</th>
+											<th>Train Name</th>
+											<th>Time</th>
+											<th>Cost</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<td colspan="100%">
+												<span class="btn btn-danger book">Book Now</span>
+											</td>
+										</tr>
+									</tfoot>
+									<tbody class="member">
+										<tr>
+											<td class="tnum"></td>
+											<td id="trainname1" class="tnam"></td>
+											<td class="ttime">10:30</td>
+											<td class="tcost">$50</td>
+										</tr>
+										<tr>
+											<td class="tnum">54876</td>
+											<td id="trainname2" class="tnam"></td>
+											<td class="ttime">10:15</td>
+											<td class="tcost">$47</td>
+										</tr>
+										<tr>
+											<td class="tnum">25312</td>
+											<td id="trainname3" class="tnam"></td>
+											<td class="ttime">15:50</td>
+											<td class="tcost">$31</td>
+										</tr>
+										<tr>
+											<td class="tnum">45698</td>
+											<td id="trainname4" class="tnam"></td>
+											<td class="ttime">21:30</td>
+
+											<td class="tcost">$80</td>
+										</tr>
+										<tr>
+											<td class="tnum">95464</td>
+											<td id="trainname5" class="tnam"></td>
+											<td class="ttime">23:15</td>
+
+											<td class="tcost">$100</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!--end of .table-responsive-->
+						</div>
+					</div>
+				</div>
+				<!-----page2------>
+				<div id="invis" class="animated fadeInUpBig invis">
+					<div id="selectclass">
+						<h2>Select your class :</h2>
+						<div id="trainClass">
+							<label class="blue"
+								><input type="radio" name="toggle" /><span>GEN</span></label
+							>
+							<label class="green"
+								><input type="radio" name="toggle" /><span>SL</span></label
+							>
+							<label class="yellow"
+								><input type="radio" name="toggle" /><span>AC1</span></label
+							>
+							<label class="pink"
+								><input type="radio" name="toggle" /><span>AC2</span></label
+							>
+							<label class="purple"
+								><input type="radio" name="toggle" /><span>AC3</span></label
+							>
+						</div>
+						<div id="bfoot">
+							<div class="col-xs-6">
+								<span class="btn btn-primary booknow">BOOK NOW</span>
+							</div>
+							<div class="col-xs-6">
+								<span class="btn btn-danger bookcancel">CANCEL</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-----------------------------------invis over--------------------->
+			</div>
+		</div>
+		<!----------------------ticket--------------------->
+
+		<div class="final animated flip">
+			<h2>Here is Your Ticket</h2>
+			<div class="ticket" id="ticket">
+				<div class="row">
+					<div class="col-xs-6 pull-left" id="date"></div>
+					<div class="col-xs-6 pull-right">INDIAN RAILWAYS</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 trainno"><span id="number"></span></div>
+					<div class="col-xs-6 trainname"></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 from">From :<span id="From"></span></div>
+					<div class="col-xs-6 to">To :<span id="To"></span></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 barcode">
+						<table id="barcodes">
+							<tr></tr>
+						</table>
+					</div>
+					<div class="col-xs-2 compartment">S3</div>
+					<div class="col-xs-4 seatno">Seat No:45</div>
+				</div>
+			</div>
+		</div>
+		<!------ticket------->
+		<!------------------------------------------>
+		<script>
+			$(document).ready(function () {
+				$(function () {
+					$('#datepicker').datepicker();
+				});
+
+				$(function () {
+					$('#timepicker').timepicker();
+				});
+
+				/***********************************************/
+				var tnum, tnam, ttime, tcost, classname;
+				var from,
+					date,
+					availableMovies = ['Movie1', 'Movie2', 'Movie3'];
+				$('#from').autocomplete({
+					source: availableMovies,
+				});
+
+				/*****hiding initially*****/
+				$('.invis').hide();
+				$('#page2').hide();
+				$('.final').hide();
+				/*********** page 1 to page 2*****/
+
+				$('#search').click(function () {
+					from = $('#from').val();
+
+					date = $('#datepicker').val();
+					if (!(from && date)) {
+						alert('Please Select All Fields !');
+						return False;
+					}
+
+					$('#page1').hide();
+					$('#page2').show();
+
+					$('.tnum').html(from);
+
+					$('#trainname1').html(from + ' (PVR Cinemas)');
+					$('#trainname2').html(from + '  (CinePlex Cinemas) ');
+					$('#trainname3').html(from + ' (Scotia Bank Arena)');
+					$('#trainname4').html(from + ' (IMAX Ultra)');
+					$('#trainname5').html(from + ' (Ultra HD)');
+
+					/***********tableselector************************/
+
+					$('tbody > tr')
+						.mouseover(function () {
+							$(this).css('backgroundColor', 'rgba(41, 103, 182, 0.89)');
+						})
+						.mouseout(function () {
+							$(this).css('backgroundColor', '');
+						});
+
+					$('tbody > tr').click(function () {
+						$(this).parent().children().removeClass('selected');
+						$(this).addClass('selected');
+					});
+
+					/*******************************************************************/
+
+					/*********************book now ********************/
+
+					$('.book').click(function () {
+						tcost = $('.selected')
+							.find('.tcost') // Gets a descendent with class="tcost"
+							.text(); // Retrieves the text within <td>
+						tnum = $('.selected').find('.tnum').text();
+
+						tnam = $('.selected').find('.tnam').text();
+
+						ttime = $('.selected').find('.ttime').text();
+						/* alert(tnum);*/
+						if (!tnum) {
+							alert('Please Select Your Train !');
+							return False;
+						}
+						$('.invis').show();
+
+						/***************** booknow ************/
+
+						$('.booknow').click(function () {
+							classname = document.querySelector(
+								'input[name="toggle"]:checked+span'
+							).innerHTML;
+
+							$('.invis').hide(function () {
+								$('#page2').hide();
+							});
+							$('.index').hide();
+							$('.final').show();
+						});
+						$('.bookcancel').click(function () {
+							$('.invis').hide();
+						});
+						/***************************booknow over*****************/
+						/******************ticket*************************/
+						$('#From').html(from);
+						$('#To').html(from);
+						$('.trainname').html(tnam);
+						$('#number').html(tnum);
+
+						var d = new Date();
+						var n = d.toLocaleDateString();
+						document.getElementById('date').innerHTML = n;
+
+						/***********************************************************/
+
+						/********barcode*************/
+						var code =
+							'1101001000010011101100101110111101101000111010111001100110111001001011110111011100101100100100001101100011101011';
+
+						table = $('#barcodes tr');
+						for (var i = 0; i < code.length; i++) {
+							if (code[i] == 1) {
+								table.append('<td bgcolor="black">');
+							} else {
+								table.append('<td bgcolor="white">');
+							}
+						}
+						/***************************/
+					});
+					/***********************************************/
+
+					/***********end***********/
+				});
+
+				/*****************page2**************************************************/
+
+				/* $("#page").ready(function(){
+               var from = $("#from").val();
+               $("#trainname1").html(from + " Express");
+             })
+             
+             */
+			});
+		</script>
 	</body>
 </html>
