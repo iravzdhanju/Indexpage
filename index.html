@@ -48,7 +48,7 @@
 						</div>
 						<div class="clearfix visible-xs"></div>
 						<div class="field col-sm-6 col-centered">
-							<div id="search" class="btn btn-primary">Search for Trains</div>
+							<div id="search" class="btn btn-primary">Search</div>
 						</div>
 					</div>
 				</div>
@@ -58,12 +58,12 @@
 							<div class="table-responsive text-center">
 								<table class="table table-bordered table-hover">
 									<caption class="text-center">
-										Available Trains :
+										Available :
 									</caption>
 									<thead>
 										<tr>
-											<th>Train No</th>
-											<th>Train Name</th>
+											<th>Movie</th>
+											<th> Name</th>
 											<th>Time</th>
 											<th>Cost</th>
 										</tr>
@@ -255,7 +255,7 @@
 						ttime = $('.selected').find('.ttime').text();
 						/* alert(tnum);*/
 						if (!tnum) {
-							alert('Please Select Your Train !');
+							alert('Please Select Your Movie !');
 							return False;
 						}
 						$('.invis').show();
