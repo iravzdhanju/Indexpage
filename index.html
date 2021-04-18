@@ -9,10 +9,11 @@
 			rel="stylesheet"
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 		/>
-		<link
+
+		<!-- <link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css"
-		/>
+		/> -->
 
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -23,17 +24,23 @@
 		<div class="index container animated zoomIn">
 			<div class="form contactform">
 				<div id="page1">
-					<h1>Book Your Train Ticket</h1>
+					<h1>Book Your Movie Ticket</h1>
 					<div class="index row">
 						<div class="field col-sm-6">
-							<label for="from">From :</label>
-							<input id="from" type="text" />
+							<!-- <label for="from">Movie</label> -->
+							<select name="movie" id="from" class="selectMovie">
+								<option value="Fast And Furious">Fast And Furious</option>
+								<option value="Jhonny Englis">Jhonny English</option>
+								<option value="Bad Boys">Bad Boys</option>
+								<option value="Superman">Superman</option>
+							</select>
+							<!-- <input id="from" type="text" /> -->
 						</div>
 
-						<div class="field col-sm-6">
+						<!-- <div class="field col-sm-6">
 							<label for="to">To :</label>
 							<input id="to" type="text" />
-						</div>
+						</div> -->
 
 						<div class="field col-sm-6 col-centered">
 							<label for="datepicker">Date</label>
@@ -114,12 +121,12 @@
 						<h2>Select your class :</h2>
 						<div id="trainClass">
 							<label class="blue"
-								><input type="radio" name="toggle" /><span>GEN</span></label
+								><input type="radio" name="toggle" /><span>Premium</label
 							>
 							<label class="green"
-								><input type="radio" name="toggle" /><span>SL</span></label
+								><input type="radio" name="toggle" /><span>Regular</span></label
 							>
-							<label class="yellow"
+							<!-- <label class="yellow"
 								><input type="radio" name="toggle" /><span>AC1</span></label
 							>
 							<label class="pink"
@@ -127,7 +134,7 @@
 							>
 							<label class="purple"
 								><input type="radio" name="toggle" /><span>AC3</span></label
-							>
+							> -->
 						</div>
 						<div id="bfoot">
 							<div class="col-xs-6">
@@ -150,15 +157,15 @@
 			<div class="ticket" id="ticket">
 				<div class="row">
 					<div class="col-xs-6 pull-left" id="date"></div>
-					<div class="col-xs-6 pull-right">INDIAN RAILWAYS</div>
+					<div class="col-xs-6 pull-right">tMovie Ticke</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 trainno"><span id="number"></span></div>
 					<div class="col-xs-6 trainname"></div>
 				</div>
 				<div class="row">
-					<div class="col-xs-6 from">From :<span id="From"></span></div>
-					<div class="col-xs-6 to">To :<span id="To"></span></div>
+					<!-- <div class="col-xs-6 from">Movie :<span id="From"></span></div> -->
+					<div class="col-xs-6 to"> :<span id="To"></span></div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 barcode">
@@ -179,18 +186,18 @@
 					$('#datepicker').datepicker();
 				});
 
-				$(function () {
-					$('#timepicker').timepicker();
-				});
+				// $(function () {
+				// 	$('#timepicker').timepicker();
+				// });
 
 				/***********************************************/
 				var tnum, tnam, ttime, tcost, classname;
 				var from,
 					date,
-					availableMovies = ['Movie1', 'Movie2', 'Movie3'];
-				$('#from').autocomplete({
-					source: availableMovies,
-				});
+					availableMovies = $('#from').value;
+				// $('#from').innerHTML({
+				// 	source: availableMovies,
+				// });
 
 				/*****hiding initially*****/
 				$('.invis').hide();
@@ -212,9 +219,9 @@
 
 					$('.tnum').html(from);
 
-					$('#trainname1').html(from + ' (PVR Cinemas)');
-					$('#trainname2').html(from + '  (CinePlex Cinemas) ');
-					$('#trainname3').html(from + ' (Scotia Bank Arena)');
+					$('#trainname1').html(from + ' (Imax)');
+					$('#trainname2').html(from + '  (Regular) ');
+					$('#trainname3').html(from + ' (Imax 3D)');
 					$('#trainname4').html(from + ' (IMAX Ultra)');
 					$('#trainname5').html(from + ' (Ultra HD)');
 
