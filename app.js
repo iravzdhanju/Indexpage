@@ -47,7 +47,7 @@
 	},
 	{
 		id: 3,
-		name: 'honny English',
+		name: 'Jhonny English',
 		username: 'Samantha',
 		email: 'Nathan@yesenia.net',
 		address: {
