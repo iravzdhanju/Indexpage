@@ -47,7 +47,7 @@
 	},
 	{
 		id: 3,
-		name: 'Clementine Bauch',
+		name: 'honny English',
 		username: 'Samantha',
 		email: 'Nathan@yesenia.net',
 		address: {
@@ -63,7 +63,7 @@
 		phone: '1-463-123-4447',
 		website: 'ramiro.info',
 		company: {
-			name: 'Romaguera-Jacobson',
+			name: 'Superman',
 			catchPhrase: 'Face to face bifurcated interface',
 			bs: 'e-enable strategic applications',
 		},
