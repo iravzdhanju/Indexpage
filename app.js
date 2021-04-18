@@ -70,7 +70,7 @@
 	},
 	{
 		id: 4,
-		name: 'Patricia Lebsack',
+		name: 'Superman',
 		username: 'Karianne',
 		email: 'Julianne.OConner@kory.org',
 		address: {
