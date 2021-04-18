@@ -25,12 +25,10 @@ body {
 	width: 100%;
 	text-align: center;
 	color: #555;
-	background: #ddd;
 }
 
 .form {
 	padding: 35px 0;
-	border: 1px solid #aaa;
 	background: #eee;
 	min-width: 100%;
 	margin: 0 auto;
